@@ -1,0 +1,35 @@
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+
+void open_file() {
+    freopen("input.inp", "r", stdin);
+    freopen("output.out", "w", stdout);
+}
+
+const ll N = 1e6 + 10;
+const ll M = 1e9 + 10;
+
+ll n, m, a, b, c1, c2, c3;
+
+int main() {
+    open_file();
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    cin >> n >> m >> a >> b;
+    ll slm = n / m;
+    ll du = n - slm * m;
+    c1 = n * a;
+    c2 = slm * b + du * a;
+    if (n % m != 0) c3 = (slm + 1) * b;
+    else c3 = slm * b;
+    
+    // cout << c1 << ' ' << c2 << '\n';
+    cout << min({c1, c2, c3}) << '\n';
+}
